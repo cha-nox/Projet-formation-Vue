@@ -26,10 +26,11 @@
 
 <template>
     <form @submit.prevent="submitForm">
-        <CityInput placeholder="Entrez le nom de la ville" @input="updateCity"/>
-        <hr>
-        <SubmitButton label="Envoyer"/>
-        <br><br><br>
+        <div>
+            <CityInput placeholder="Entrez le nom de la ville" @input="updateCity"/>
+            <SubmitButton label="Rechercher"/>
+        </div>
+        <hr><br>
         <section>
             <MovieCard v-for="movie in movies" :key="movie.id" :title="movie.title" :description="movie.overview" :image_url="'https://image.tmdb.org/t/p/original/' + movie.poster_path"/>
         </section>
@@ -37,6 +38,12 @@
 </template>
 
 <style scoped>
+div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
 section{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
